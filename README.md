@@ -1,4 +1,4 @@
-## **People Management System 👤**
+# **People Management System 👤**
 
 This Java project provides a foundation for building a people management system. It utilizes pure SQL JDBC for database interaction, offering a low-level, performant, and maintainable solution.
 
