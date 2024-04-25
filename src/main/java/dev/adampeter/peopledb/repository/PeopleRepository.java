@@ -18,18 +18,6 @@ public class PeopleRepository extends CRUDRepository<Person> {
                 (FIRST_NAME, LAST_NAME, DOB, SALARY, EMAIL, HOME_ADDRESS, BUSINESS_ADDRESS, SPOUSE, PARENT)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)
             """;
-    //    private static final String FIND_BY_ID_SQL = """
-//                SELECT
-//                P.ID, P.FIRST_NAME, P.LAST_NAME, P.DOB, P.SALARY, P.SPOUSE,
-//                HOME.ID AS HOME_ID, HOME.STREET_ADDRESS AS HOME_STREET_ADDRESS, HOME.ADDRESS2 AS HOME_ADDRESS2, HOME.CITY AS HOME_CITY, HOME.STATE AS HOME_STATE, HOME.POSTCODE AS HOME_POSTCODE, HOME.COUNTRY AS HOME_COUNTRY, HOME.COUNTY AS HOME_COUNTY, HOME.REGION AS HOME_REGION,
-//                BUSINESS.ID AS BUSINESS_ID, BUSINESS.STREET_ADDRESS AS BUSINESS_STREET_ADDRESS, BUSINESS.ADDRESS2 AS BUSINESS_ADDRESS2, BUSINESS.CITY AS BUSINESS_CITY, BUSINESS.STATE AS BUSINESS_STATE, BUSINESS.POSTCODE AS BUSINESS_POSTCODE, BUSINESS.COUNTRY AS BUSINESS_COUNTRY, BUSINESS.COUNTY AS BUSINESS_COUNTY, BUSINESS.REGION AS BUSINESS_REGION,
-//                SPOUSE.ID AS SPOUSE_ID, SPOUSE.FIRST_NAME AS SPOUSE_FIRST_NAME, SPOUSE.LAST_NAME AS SPOUSE_LAST_NAME, SPOUSE.DOB AS SPOUSE_DOB, SPOUSE.SALARY AS SPOUSE_SALARY
-//                FROM PEOPLE AS P
-//                LEFT OUTER JOIN ADDRESSES AS HOME ON P.HOME_ADDRESS = HOME.ID
-//                LEFT OUTER JOIN ADDRESSES AS BUSINESS ON P.BUSINESS_ADDRESS = BUSINESS.ID
-//                LEFT OUTER JOIN PEOPLE AS SPOUSE ON P.SPOUSE = SPOUSE.ID
-//                WHERE P.ID=?
-//            """;
     private static final String FIND_BY_ID_SQL = """
                 SELECT
                 PARENT.ID AS PARENT_ID, PARENT.FIRST_NAME AS PARENT_FIRST_NAME, PARENT.LAST_NAME AS PARENT_LAST_NAME, PARENT.DOB AS PARENT_DOB, PARENT.SALARY AS PARENT_SALARY, PARENT.EMAIL AS PARENT_EMAIL,
@@ -127,17 +115,6 @@ public class PeopleRepository extends CRUDRepository<Person> {
 
         return new Person(spouseId, spouseFirstName, spouseLastName, spouseDob, spouseSalary);
     }
-
-// Another way to get around column aliasing (indexing "A_ID" instead of "ID"
-//    private <T> T getValueByAlias(String columnAlias, ResultSet rs, Class<T> clazz) throws SQLException { // to prevent conflict with "class" keyword
-//        int columnCount = rs.getMetaData().getColumnCount();
-//        for (int i = 1; i <= columnCount; i++) { // rs indexing is one-based
-//            if (columnAlias.equals(rs.getMetaData().getColumnLabel(i))) {
-//                return (T) rs.getObject(i);
-//            }
-//        }
-//        throw new SQLException(String.format("Column not found for alias: %s", columnAlias)); // we don't have to return if we throw an exception
-//    }
 
     @Override
     @SQL(value = SAVE_PERSON_SQL, operationType = CrudOperation.SAVE)
