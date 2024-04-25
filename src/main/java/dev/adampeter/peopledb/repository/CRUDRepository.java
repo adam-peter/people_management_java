@@ -178,7 +178,8 @@ public abstract class CRUDRepository<T> {
 
     abstract T extractEntityFromResultSet(ResultSet rs) throws SQLException;
 
-    protected void postSave(T entity, long id) {}
+    protected void postSave(T entity, long id) {
+    }
 
     protected String getSaveSql() {
         throw new RuntimeException("SQL not defined.");

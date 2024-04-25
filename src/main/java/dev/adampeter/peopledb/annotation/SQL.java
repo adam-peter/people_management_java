@@ -10,6 +10,7 @@ import java.lang.annotation.RetentionPolicy;
 @Repeatable(MultiSQL.class)
 public @interface SQL {
     String value();
+
     CrudOperation operationType();
 //    int age() default 30; - can create more annotation attributes by creating more methods
 //    String name() default "John";

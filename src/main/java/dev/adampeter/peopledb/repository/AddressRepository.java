@@ -1,7 +1,7 @@
 package dev.adampeter.peopledb.repository;
 
-import dev.adampeter.peopledb.model.Address;
 import dev.adampeter.peopledb.annotation.SQL;
+import dev.adampeter.peopledb.model.Address;
 import dev.adampeter.peopledb.model.CrudOperation;
 import dev.adampeter.peopledb.model.Region;
 
